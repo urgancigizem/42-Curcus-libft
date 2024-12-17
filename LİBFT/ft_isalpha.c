@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gurganci <gurganci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 19:17:18 by gurganci          #+#    #+#             */
-/*   Updated: 2024/10/31 16:01:40 by gurganci         ###   ########.fr       */
+/*   Created: 2024/10/11 16:57:57 by gurganci          #+#    #+#             */
+/*   Updated: 2024/10/22 18:09:38 by gurganci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int	ft_isalpha(int c)
 {
-	size_t	i;
-	size_t	j;
-	char	*result;
-
-	result = (char *)haystack;
-	if (!*needle)
-		return (result);
-	i = 0;
-	while (i < len && result[i])
-	{
-		j = 0;
-		while (result[i + j] == needle[j] && i + j < len)
-		{
-			if (needle[j + 1] == '\0')
-				return (result + i);
-			j++;
-		}
-		i++;
-	}
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
 	return (0);
 }

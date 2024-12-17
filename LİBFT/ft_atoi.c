@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gurganci <gurganci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 19:17:18 by gurganci          #+#    #+#             */
-/*   Updated: 2024/10/31 16:01:40 by gurganci         ###   ########.fr       */
+/*   Created: 2024/10/18 18:00:40 by gurganci          #+#    #+#             */
+/*   Updated: 2024/10/25 17:56:40 by gurganci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
-	char	*result;
+	int	i;
+	int	sign;
+	int	result;
 
-	result = (char *)haystack;
-	if (!*needle)
-		return (result);
+	sign = 1;
+	result = 0;
 	i = 0;
-	while (i < len && result[i])
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		j = 0;
-		while (result[i + j] == needle[j] && i + j < len)
-		{
-			if (needle[j + 1] == '\0')
-				return (result + i);
-			j++;
-		}
+		if (str[i] == '-')
+			sign *= (-1);
 		i++;
 	}
-	return (0);
+	while ((str[i] >= '0' && str[i] <= '9'))
+	{
+		result *= 10;
+		result += (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
